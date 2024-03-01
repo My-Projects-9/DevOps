@@ -10,6 +10,7 @@
 # ./list-users.sh <REPO_OWNER/ORG_NAME> <REPO_NAME>
 ##########################################################################
 
+helper()
 
 # GitHub API URL
 API_URL="https://api.github.com"
@@ -45,6 +46,13 @@ function list_users_with_read_access {
         echo "Users with read access to ${REPO_OWNER}/${REPO_NAME}:"
         echo "$collaborators"
     fi
+}
+
+function helper {
+    expected_cmd_args=3
+    if [ $# -ne $expected_cmd_args]; then
+    echo "Please execute the script with required cmd args as follows"
+    echo "<filename>.sh <REPO_OWNER/ORG_NAME> <REPO_NAME>"
 }
 
 # Main script
