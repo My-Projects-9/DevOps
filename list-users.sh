@@ -4,7 +4,7 @@
 # Author: Navneet Ch
 # Date: 01/03/2024
 # Purpose: To print the Users of a Git Repository with Reader Role Access
-# CLI cmds to be given:
+# Input CLI cmds:
 # export username="<username>"
 # export token="<Git_Classic_Token>"
 # ./list-users.sh <REPO_OWNER/ORG_NAME> <REPO_NAME>
