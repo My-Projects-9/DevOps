@@ -10,10 +10,12 @@ pipeline {
                     sh 'docker pull hashicorp/terraform'
                 }
             }
-            stage ('Terraform Version')
+            
+            stage ('Terraform Version') {
                 steps {
                     sh 'terraform version'
                 }
+            }
 
             stage ('Check-in to Terraform Config Directory') {
                 steps {
