@@ -1,11 +1,10 @@
 pipeline {
-    // agent {
-    //     docker {image 'hashicorp/terraform:latest'}
-    // }
-
     agent {
-        docker {image 'honomoa/docker-jenkins-terraform:0.11.10'}
+        docker { image 'hashicorp/terraform:latest' }
     }
+    // agent {
+    //     docker {image 'honomoa/docker-jenkins-terraform:0.11.10'}
+    // }
     // agent any
     environment {
         AWS_SECRET_KEY = credentials('aws_secret_key')
