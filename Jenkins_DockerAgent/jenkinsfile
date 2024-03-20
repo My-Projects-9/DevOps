@@ -9,7 +9,7 @@ pipeline {
     }
         stages {
             stage('Pull Terraform Docker Image') {
-                script {
+                steps {
                     docker.image('hashicorp/terraform:latest').pull()
                 }
             }
