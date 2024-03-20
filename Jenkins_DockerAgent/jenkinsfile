@@ -2,7 +2,11 @@ pipeline {
     // agent {
     //     docker {image 'hashicorp/terraform:latest'}
     // }
-    agent any
+
+    agent {
+        docker {image 'honomoa/docker-jenkins-terraform:0.11.10'}
+    }
+    // agent any
     environment {
         AWS_SECRET_KEY = credentials('aws_secret_key')
         AWS_ACCESS_KEY = credentials('aws_access_key')
@@ -13,11 +17,11 @@ pipeline {
         //             docker.image('hashicorp/terraform:latest').pull()
         //         }
         //     }
-             stage('Pull Terraform Docker Image') {
-                steps {
-                    sh "docker pull hashicorp/terraform"
-                }
-            }
+            //  stage('Pull Terraform Docker Image') {
+            //     steps {
+            //         sh "docker pull hashicorp/terraform"
+            //     }
+            // }
 
             // stage('Install Additional Packages') {
             //     steps {
