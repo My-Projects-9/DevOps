@@ -14,7 +14,7 @@ pipeline {
             stage('Install Additional Packages') {
                 steps {
                     // Install any additional dependencies required by Terraform
-                    sh 'sudo apt-get install'
+                    sh 'apt-get install'
                 }
             }
 
