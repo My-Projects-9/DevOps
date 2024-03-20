@@ -11,11 +11,11 @@ pipeline {
                 }
             }
 
-            stage ('Terraform Version') {
-                steps {
-                    sh 'which terraform'
-                }
-            }
+            // stage ('Terraform Version') {
+            //     steps {
+            //         sh 'which terraform'
+            //     }
+            // }
 
             stage ('Check-in to Terraform Config Directory') {
                 steps {
