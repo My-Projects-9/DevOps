@@ -7,17 +7,17 @@ pipeline {
         AWS_SECRET_KEY = credentials('aws_secret_key')
         AWS_ACCESS_KEY = credentials('aws_access_key')
     }
-        stages {
-            stage('Pull Terraform Docker Image') {
+        // stages {
+        //     stage('Pull Terraform Docker Image') {
+        //         steps {
+        //             docker.image('hashicorp/terraform:latest').pull()
+        //         }
+        //     }
+             stage('Pull Terraform Docker Image') {
                 steps {
-                    docker.image('hashicorp/terraform:latest').pull()
+                    sh "docker pull hashicorp/terraform"
                 }
             }
-            //  stage('Pull Terraform Docker Image') {
-            //     steps {
-            //         sh "docker pull hashicorp/terraform"
-            //     }
-            // }
 
             // stage('Install Additional Packages') {
             //     steps {
