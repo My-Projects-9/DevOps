@@ -11,11 +11,12 @@ pipeline {
                 }
             }
 
-            // stage ('Terraform Version') {
-            //     steps {
-            //         sh 'terraform version'
-            //     }
-            // }
+            stage('Install Terraform') {
+                steps {
+                    // Install any additional dependencies required by Terraform
+                    sh 'sudo apt-get install'
+                }
+            }
 
             stage ('Terraform Init') {
                 steps {
