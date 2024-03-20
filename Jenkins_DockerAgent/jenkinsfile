@@ -11,31 +11,28 @@ pipeline {
                 }
             }
 
-            // stage ('Terraform Version') {
-            //     steps {
-            //         sh 'which terraform'
-            //     }
-            // }
-
-            stage ('Check-in to Terraform Config Directory') {
+            stage ('Terraform Version') {
                 steps {
-                    dir("Jenkins_DockerAgent/terraform")
+                    sh 'terraform version'
                 }
             }
 
             stage ('Terraform Init') {
                 steps {
+                    dir("Jenkins_DockerAgent/terraform")
                     sh 'terraform init'
                 }
             }
 
             stage ('Terraform Plan') {
                 steps {
+                    dir("Jenkins_DockerAgent/terraform")
                     sh 'terraform plan'
                 }
             }
             stage ('Terraform Apply') {
                 steps {
+                    dir("Jenkins_DockerAgent/terraform")
                     sh 'terraform apply "aws_access_key=${AWS_ACCESS_KEY}" -var="aws_secret_key=${AWS_SECRET_KEY}" -auto-approve'
                 }
             }
