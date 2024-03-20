@@ -12,11 +12,11 @@ pipeline {
                 }
             }
 
-            // stage ('Check-in to Terraform Config Directory') {
-            //     steps {
-            //         dir 
-            //     }
-            // }
+            stage ('Check-in to Terraform Config Directory') {
+                steps {
+                    dir("Jenkins_DockerAgent/terraform")
+                }
+            }
 
             stage ('Terraform Init') {
                 steps {
