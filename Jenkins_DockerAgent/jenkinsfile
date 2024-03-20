@@ -1,15 +1,12 @@
 pipeline {
-    agent any
+    agent {
+        docker {image 'hashicorp/terraform:latest'}
+    }
     environment {
         AWS_SECRET_KEY = credentials('aws_secret_key')
         AWS_ACCESS_KEY = credentials('aws_access_key')
     }
         stages {
-            stage ('Install Terraform') {
-                steps {
-                    sh 'docker pull hashicorp/terraform'
-                }
-            }
 
             // stage('Install Additional Packages') {
             //     steps {
