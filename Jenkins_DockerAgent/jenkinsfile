@@ -7,7 +7,7 @@ pipeline {
         AWS_SECRET_KEY = credentials('aws_secret_key')
         AWS_ACCESS_KEY = credentials('aws_access_key')
     }
-        // stages {
+        stages {
         //     stage('Pull Terraform Docker Image') {
         //         steps {
         //             docker.image('hashicorp/terraform:latest').pull()
@@ -43,6 +43,7 @@ pipeline {
                     }
                 }
             }
+
             stage ('Terraform Apply') {
                 steps {
                     dir("Jenkins_DockerAgent/terraform") {
@@ -50,5 +51,5 @@ pipeline {
                     }
                 }
             }
-    }
+        }
 }
