@@ -10,10 +10,10 @@ pipeline {
                     sh 'docker pull hashicorp/terraform'
                 }
             }
-            
+
             stage ('Terraform Version') {
                 steps {
-                    sh 'terraform version'
+                    sh 'which terraform'
                 }
             }
 
