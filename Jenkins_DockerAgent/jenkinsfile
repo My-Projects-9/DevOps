@@ -8,12 +8,16 @@ pipeline {
         AWS_ACCESS_KEY = credentials('aws_access_key')
     }
         stages {
-
-             stage('Pull Terraform Docker Image') {
-                steps {
-                    sh "docker pull hashicorp/terraform"
+            stage('Pull Terraform Docker Image') {
+                script {
+                    docker.image('hashicorp/terraform:latest').pull()
                 }
             }
+            //  stage('Pull Terraform Docker Image') {
+            //     steps {
+            //         sh "docker pull hashicorp/terraform"
+            //     }
+            // }
 
             // stage('Install Additional Packages') {
             //     steps {
@@ -27,7 +31,7 @@ pipeline {
             stage ('Terraform Init') {
                 steps {
                     dir("Jenkins_DockerAgent/terraform") {
-                        sh 'docker run -i -t hashicorp/terraform:latest init'
+                        sh 'terraform init'
                     }
                 }
             }
@@ -35,7 +39,7 @@ pipeline {
             stage ('Terraform Plan') {
                 steps {
                     dir("Jenkins_DockerAgent/terraform") {
-                        sh 'docker run -i -t hashicorp/terraform:latest apply'
+                        sh 'terraform plan'
                     }
                 }
             }
