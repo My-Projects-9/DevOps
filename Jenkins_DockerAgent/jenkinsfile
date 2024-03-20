@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    environment {
+        AWS_SECRET_KEY = credentials('aws_secret_key')
+        AWS_ACCESS_KEY = credentials('aws_access_key')
+    }
+        stages {
+            stage ('Install Terraform') {
+                steps {
+                    sh 'docker pull hashicorp/terraform'
+                    sh 'terraform --version'
+                }
+            }
+
+            // stage ('Check-in to Terraform Config Directory') {
+            //     steps {
+            //         dir 
+            //     }
+            // }
+
+            stage ('Terraform Init') {
+                steps {
+                    sh 'terraform init'
+                }
+            }
+
+            stage ('Terraform Plan') {
+                steps {
+                    sh 'terraform plan'
+                }
+            }
+            stage ('Terraform Apply') {
+                steps {
+                    sh 'terraform apply "aws_access_key=${AWS_ACCESS_KEY}" -var="aws_secret_key=${AWS_SECRET_KEY}" -auto-approve'
+                }
+            }
+    }
+}
