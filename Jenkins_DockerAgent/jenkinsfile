@@ -1,6 +1,9 @@
 pipeline {
     agent {
-        docker { image 'hashicorp/terraform:latest' }
+        docker { 
+            image 'hashicorp/terraform:latest'
+            entryPoint ''
+        }
     }
     // agent {
     //     docker {image 'honomoa/docker-jenkins-terraform:0.11.10'}
