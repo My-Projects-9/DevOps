@@ -2,7 +2,8 @@ pipeline {
     agent {
         docker { 
             image 'hashicorp/terraform:latest'
-            args '-it'
+            // args '-it'
+            command 'cat'
         }
     }
     // agent {
